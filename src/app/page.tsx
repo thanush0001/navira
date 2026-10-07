@@ -29,7 +29,7 @@ const products = [
   {
     name: "Tiger Head Sculpture",
     image: "/products/tiger-head-orange.png",
-    price: "₹2,499",
+    price: "₹1,199",
     description: "Cultural 3D-printed tiger head sculpture.",
     slug: "tiger-head",
     heroLabel: "PILITHA MANDE",
@@ -42,7 +42,7 @@ const products = [
   {
     name: "White Tiger Head",
     image: "/products/tiger-head-white.png",
-    price: "₹2,499",
+    price: "₹1,199",
     description: "Striking white tiger head decorative sculpture.",
     slug: "tiger-head-white",
     heroLabel: "PILITHA MANDE",
@@ -55,7 +55,7 @@ const products = [
   {
     name: "Black Tiger Head",
     image: "/products/tiger-head-black.png",
-    price: "₹2,499",
+    price: "₹1,299",
     description: "Bold black tiger head decorative sculpture.",
     slug: "tiger-head-black",
     heroLabel: "PILITHA MANDE",
@@ -68,7 +68,7 @@ const products = [
   {
     name: "Kambala",
     image: "/products/kambla.png",
-    price: "₹3,499",
+    price: "₹2,499",
     description:
       "A 3D-printed tribute to the traditional Kambala sport.",
     slug: "kambala",
@@ -82,7 +82,7 @@ const products = [
   {
     name: "Aati Kalanje",
     image: "/products/aati-kalanje.png",
-    price: "₹2,999",
+    price: "₹1,999",
     description:
       "Traditional coastal Karnataka inspired creation.",
     slug: "aati-kalanje",
@@ -110,7 +110,7 @@ const products = [
   {
     name: "Ganesha",
     image: null,
-    price: "₹10",
+    price: "₹799",
     description:
       "A culturally inspired Ganesha creation made through 3D printing.",
     slug: "ganesha",
@@ -138,7 +138,7 @@ const products = [
   {
     name: "Pili Nalipun",
     image: null,
-    price: "₹2,999",
+    price: "₹4,999",
     description:
       "A culturally inspired NAVIRA creation recreated through modern 3D printing.",
     slug: "pili-nalipun",
@@ -1946,7 +1946,6 @@ export default function Home() {
         </div>
 
       </footer>
-
 
 
     </main>
