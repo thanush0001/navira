@@ -24,6 +24,10 @@ function getServiceClient() {
   );
 }
 
+// =========================================================
+// GET SAVED ADDRESSES
+// =========================================================
+
 export async function GET() {
   try {
     const user = await getAuthenticatedUser();
@@ -79,9 +83,26 @@ export async function GET() {
       );
     }
 
+    // Convert database "phone" field to the
+    // "mobile_number" field expected by the frontend.
+    const addresses = (data ?? []).map((address) => ({
+      id: address.id,
+      full_name: address.full_name,
+      mobile_number: address.phone,
+      address_line1: address.address_line1,
+      address_line2: address.address_line2,
+      landmark: address.landmark,
+      city: address.city,
+      state: address.state,
+      postal_code: address.postal_code,
+      country: address.country,
+      is_default: address.is_default,
+      created_at: address.created_at,
+    }));
+
     return NextResponse.json({
       success: true,
-      addresses: data ?? [],
+      addresses,
     });
   } catch (error) {
     console.error(
@@ -98,6 +119,10 @@ export async function GET() {
     );
   }
 }
+
+// =========================================================
+// SAVE NEW ADDRESS
+// =========================================================
 
 export async function POST(request: Request) {
   try {
@@ -119,8 +144,12 @@ export async function POST(request: Request) {
       body.fullName ?? ""
     ).trim();
 
+    // Frontend sends "mobileNumber".
+    // "phone" is also accepted for compatibility.
     const phone = String(
-      body.phone ?? ""
+      body.mobileNumber ??
+        body.phone ??
+        ""
     ).trim();
 
     const addressLine1 = String(
@@ -154,6 +183,10 @@ export async function POST(request: Request) {
     const isDefault = Boolean(
       body.isDefault
     );
+
+    // =======================================================
+    // VALIDATION
+    // =======================================================
 
     if (
       !fullName ||
@@ -197,8 +230,10 @@ export async function POST(request: Request) {
 
     const supabase = getServiceClient();
 
-    // If this address is marked as default,
-    // remove default from the customer's existing addresses.
+    // =======================================================
+    // RESET EXISTING DEFAULT
+    // =======================================================
+
     if (isDefault) {
       const { error: resetError } =
         await supabase
@@ -225,16 +260,20 @@ export async function POST(request: Request) {
       }
     }
 
-    // If this is the customer's first address,
-    // automatically make it default.
-    const { count, error: countError } =
-      await supabase
-        .from("customer_addresses")
-        .select("id", {
-          count: "exact",
-          head: true,
-        })
-        .eq("user_id", user.id);
+    // =======================================================
+    // CHECK EXISTING ADDRESS COUNT
+    // =======================================================
+
+    const {
+      count,
+      error: countError,
+    } = await supabase
+      .from("customer_addresses")
+      .select("id", {
+        count: "exact",
+        head: true,
+      })
+      .eq("user_id", user.id);
 
     if (countError) {
       console.error(
@@ -243,8 +282,13 @@ export async function POST(request: Request) {
       );
     }
 
+    // First address automatically becomes default.
     const finalDefault =
       isDefault || !count;
+
+    // =======================================================
+    // INSERT ADDRESS
+    // =======================================================
 
     const { data, error } =
       await supabase
@@ -294,9 +338,25 @@ export async function POST(request: Request) {
       );
     }
 
+    // Return the field name expected by the frontend.
+    const address = {
+      id: data.id,
+      full_name: data.full_name,
+      mobile_number: data.phone,
+      address_line1: data.address_line1,
+      address_line2: data.address_line2,
+      landmark: data.landmark,
+      city: data.city,
+      state: data.state,
+      postal_code: data.postal_code,
+      country: data.country,
+      is_default: data.is_default,
+      created_at: data.created_at,
+    };
+
     return NextResponse.json({
       success: true,
-      address: data,
+      address,
     });
   } catch (error) {
     console.error(
