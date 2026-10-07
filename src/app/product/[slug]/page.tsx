@@ -9,7 +9,7 @@ type Product = {
   id: string;
   name: string;
   price: number;
-  image: string;
+  image: string | null;
   description: string;
 };
 
@@ -67,6 +67,42 @@ const PRODUCTS: Record<string, Product> = {
     description:
       "Culturally inspired handcrafted 3D-printed piece with distinctive character.",
   },
+
+  ganesha: {
+    id: "ganesha",
+    name: "Ganesha",
+    price: 999,
+    image: null,
+    description:
+      "A thoughtfully designed 3D-printed Ganesha piece, created for decorative display.",
+  },
+
+  "custom-momentos": {
+    id: "custom-momentos",
+    name: "Custom Momentos",
+    price: 0,
+    image: null,
+    description:
+      "Create a personalised 3D-printed momento for special occasions, celebrations, and memorable moments.",
+  },
+
+  "pili-nalipun": {
+    id: "pili-nalipun",
+    name: "Pili Nalipun",
+    price: 2999,
+    image: null,
+    description:
+      "A distinctive 3D-printed creation inspired by the cultural character of coastal Karnataka.",
+  },
+
+  "custom-3d-prints": {
+    id: "custom-3d-prints",
+    name: "Custom 3D Prints",
+    price: 0,
+    image: null,
+    description:
+      "Have an idea or design in mind? Talk to NAVIRA about creating a custom 3D-printed piece.",
+  },
 };
 
 export default function ProductPage() {
@@ -90,9 +126,7 @@ export default function ProductPage() {
             NAVIRA 3D
           </p>
 
-          <h1 className="font-serif text-4xl">
-            Product Not Found
-          </h1>
+          <h1 className="font-serif text-4xl">Product Not Found</h1>
 
           <p className="mt-4 text-sm text-[#625d57]">
             The product you are looking for does not exist.
@@ -110,6 +144,11 @@ export default function ProductPage() {
     );
   }
 
+  // CUSTOM PRODUCTS
+  const isCustomProduct =
+    product.id === "custom-momentos" ||
+    product.id === "custom-3d-prints";
+
   // DECREASE QUANTITY
   const decreaseQuantity = () => {
     setQuantity((current) => Math.max(1, current - 1));
@@ -122,21 +161,43 @@ export default function ProductPage() {
     setAdded(false);
   };
 
+  // WHATSAPP CUSTOM ORDER
+  const openCustomWhatsApp = () => {
+    window.open(
+      "https://wa.me/918660215764?text=Hi%20NAVIRA%2C%20I%27m%20interested%20in%20a%20custom%20order.",
+      "_blank"
+    );
+  };
+
   // ADD TO CART
   const handleAddToCart = () => {
+    if (isCustomProduct) {
+      openCustomWhatsApp();
+      return;
+    }
+
     addToCart({
       ...product,
+      image: product.image ?? "",
       quantity,
     });
+
     setAdded(true);
   };
 
   // BUY NOW
   const handleBuyNow = () => {
+    if (isCustomProduct) {
+      openCustomWhatsApp();
+      return;
+    }
+
     addToCart({
       ...product,
+      image: product.image ?? "",
       quantity,
     });
+
     router.push("/cart");
   };
 
@@ -148,14 +209,32 @@ export default function ProductPage() {
           <div className="flex items-start justify-center">
             <div className="relative w-full max-w-[500px] overflow-hidden rounded-2xl bg-white">
               <div className="relative aspect-[4/5] w-full">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 500px"
-                  className="object-contain p-6 md:p-8"
-                />
+                {product.image ? (
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 500px"
+                    className="object-contain p-6 md:p-8"
+                  />
+                ) : (
+                  <div className="flex h-full items-center justify-center bg-[#eeeae2] px-10 text-center">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-[0.25em] text-[#756b60]">
+                        NAVIRA 3D
+                      </p>
+
+                      <p className="mt-4 font-serif text-3xl">
+                        {product.name}
+                      </p>
+
+                      <p className="mt-3 text-xs leading-6 text-[#756b60]">
+                        Product image coming soon.
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -174,41 +253,47 @@ export default function ProductPage() {
               {product.description}
             </p>
 
-            <p className="mt-7 text-2xl">
-              ₹{product.price.toLocaleString("en-IN")}
-            </p>
+            {isCustomProduct ? (
+              <p className="mt-7 text-lg">Custom pricing</p>
+            ) : (
+              <p className="mt-7 text-2xl">
+                ₹{product.price.toLocaleString("en-IN")}
+              </p>
+            )}
 
             {/* QUANTITY */}
-            <div className="mt-8">
-              <p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-[#756b60]">
-                Quantity
-              </p>
+            {!isCustomProduct && (
+              <div className="mt-8">
+                <p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-[#756b60]">
+                  Quantity
+                </p>
 
-              <div className="flex h-12 w-32 items-center justify-between border border-black/20 bg-white px-4">
-                <button
-                  type="button"
-                  onClick={decreaseQuantity}
-                  disabled={quantity === 1}
-                  aria-label="Decrease quantity"
-                  className="text-xl text-[#625d57] transition-opacity hover:opacity-50 disabled:cursor-not-allowed disabled:opacity-30"
-                >
-                  −
-                </button>
+                <div className="flex h-12 w-32 items-center justify-between border border-black/20 bg-white px-4">
+                  <button
+                    type="button"
+                    onClick={decreaseQuantity}
+                    disabled={quantity === 1}
+                    aria-label="Decrease quantity"
+                    className="text-xl text-[#625d57] transition-opacity hover:opacity-50 disabled:cursor-not-allowed disabled:opacity-30"
+                  >
+                    −
+                  </button>
 
-                <span className="min-w-6 text-center text-sm">
-                  {quantity}
-                </span>
+                  <span className="min-w-6 text-center text-sm">
+                    {quantity}
+                  </span>
 
-                <button
-                  type="button"
-                  onClick={increaseQuantity}
-                  aria-label="Increase quantity"
-                  className="text-xl text-[#625d57] transition-opacity hover:opacity-50"
-                >
-                  +
-                </button>
+                  <button
+                    type="button"
+                    onClick={increaseQuantity}
+                    aria-label="Increase quantity"
+                    className="text-xl text-[#625d57] transition-opacity hover:opacity-50"
+                  >
+                    +
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
 
             {/* BUTTONS */}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -217,7 +302,11 @@ export default function ProductPage() {
                 onClick={handleAddToCart}
                 className="w-full bg-[#171717] px-8 py-4 text-[10px] font-medium tracking-[0.2em] text-white transition-opacity hover:opacity-80"
               >
-                {added ? "ADDED TO CART ✓" : "ADD TO CART"}
+                {isCustomProduct
+                  ? "ENQUIRE ON WHATSAPP"
+                  : added
+                    ? "ADDED TO CART ✓"
+                    : "ADD TO CART"}
               </button>
 
               <button
@@ -225,7 +314,7 @@ export default function ProductPage() {
                 onClick={handleBuyNow}
                 className="w-full border border-[#171717] px-8 py-4 text-[10px] font-medium tracking-[0.2em] transition-colors hover:bg-[#171717] hover:text-white"
               >
-                BUY NOW
+                {isCustomProduct ? "CONTACT NAVIRA" : "BUY NOW"}
               </button>
             </div>
 
@@ -263,7 +352,7 @@ export default function ProductPage() {
                 </p>
 
                 <a
-                  href="https://wa.me/919480399248"
+                  href="https://wa.me/918660215764"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex text-sm font-medium underline underline-offset-4 transition-opacity hover:opacity-60"
