@@ -110,7 +110,7 @@ const products = [
   {
     name: "Ganesha",
     image: null,
-    price: "₹999",
+    price: "₹10",
     description:
       "A culturally inspired Ganesha creation made through 3D printing.",
     slug: "ganesha",
