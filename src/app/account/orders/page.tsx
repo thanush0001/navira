@@ -120,7 +120,7 @@ export default function CustomerOrdersPage() {
         min-h-[100dvh]
         w-full
         overflow-x-hidden
-        bg-[#f7f5f0]
+        bg-[#ffffff]
         text-[#172033]
       "
       style={{
@@ -334,7 +334,7 @@ export default function CustomerOrdersPage() {
                   </div>
 
                   {/* DATE */}
-                  <div className="mt-5 rounded-2xl bg-[#f7f5f0] p-4">
+                  <div className="mt-5 rounded-2xl bg-[#ffffff] p-4">
                     <p className="text-xs font-medium text-[#6b7890]">
                       Placed on
                     </p>

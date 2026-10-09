@@ -156,7 +156,7 @@ export default function AdminOrderDetailsPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-[#f7f5f0] px-6 py-12 text-[#171717] md:px-10">
+      <main className="min-h-screen bg-[#ffffff] px-6 py-12 text-[#171717] md:px-10">
         <div className="mx-auto max-w-7xl">
           <p className="text-sm">
             Loading order...
@@ -172,7 +172,7 @@ export default function AdminOrderDetailsPage() {
 
   if (error || !order) {
     return (
-      <main className="min-h-screen bg-[#f7f5f0] px-6 py-12 text-[#171717] md:px-10">
+      <main className="min-h-screen bg-[#ffffff] px-6 py-12 text-[#171717] md:px-10">
         <div className="mx-auto max-w-7xl">
           <p className="text-[10px] uppercase tracking-[0.25em] text-[#756b60]">
             NAVIRA 3D
@@ -227,7 +227,7 @@ export default function AdminOrderDetailsPage() {
   // --------------------------------
 
   return (
-    <main className="min-h-screen bg-[#f7f5f0] px-6 py-12 text-[#171717] md:px-10">
+    <main className="min-h-screen bg-[#ffffff] px-6 py-12 text-[#171717] md:px-10">
       <div className="mx-auto max-w-7xl">
 
         {/* HEADER */}
@@ -449,7 +449,7 @@ export default function AdminOrderDetailsPage() {
                                 className="h-16 w-16 border border-black/10 object-cover"
                               />
                             ) : (
-                              <div className="flex h-16 w-16 shrink-0 items-center justify-center border border-black/10 bg-[#f7f5f0] text-[9px] uppercase tracking-wider text-[#756b60]">
+                              <div className="flex h-16 w-16 shrink-0 items-center justify-center border border-black/10 bg-[#ffffff] text-[9px] uppercase tracking-wider text-[#756b60]">
                                 No Image
                               </div>
                             )}

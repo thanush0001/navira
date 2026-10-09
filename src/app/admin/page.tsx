@@ -200,7 +200,7 @@ export default function AdminDashboardPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-[#f7f5f0] px-6 py-12 text-[#171717] md:px-10">
+      <main className="min-h-screen bg-[#ffffff] px-6 py-12 text-[#171717] md:px-10">
         <div className="mx-auto max-w-7xl">
           <p className="text-[10px] uppercase tracking-[0.25em] text-[#756b60]">
             NAVIRA 3D
@@ -224,7 +224,7 @@ export default function AdminDashboardPage() {
 
   if (error) {
     return (
-      <main className="min-h-screen bg-[#f7f5f0] px-6 py-12 text-[#171717] md:px-10">
+      <main className="min-h-screen bg-[#ffffff] px-6 py-12 text-[#171717] md:px-10">
         <div className="mx-auto max-w-7xl">
           <p className="text-[10px] uppercase tracking-[0.25em] text-[#756b60]">
             NAVIRA 3D
@@ -257,7 +257,7 @@ export default function AdminDashboardPage() {
   // --------------------------------
 
   return (
-    <main className="min-h-screen bg-[#f7f5f0] px-6 py-12 text-[#171717] md:px-10">
+    <main className="min-h-screen bg-[#ffffff] px-6 py-12 text-[#171717] md:px-10">
       <div className="mx-auto max-w-7xl">
 
         {/* HEADER */}

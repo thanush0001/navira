@@ -126,7 +126,7 @@ export default function ProductPage() {
   // PRODUCT NOT FOUND
   if (!product) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f7f5f0] px-6 text-[#171717]">
+      <main className="flex min-h-screen items-center justify-center bg-[#ffffff] px-6 text-[#171717]">
         <div className="text-center">
           <p className="mb-4 text-[10px] uppercase tracking-[0.25em] text-[#756b60]">
             NAVIRA 3D
@@ -199,7 +199,7 @@ export default function ProductPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f7f5f0] text-[#171717]">
+    <main className="min-h-screen bg-[#ffffff] text-[#171717]">
       <section className="mx-auto max-w-6xl px-6 py-12 md:px-10 md:py-20">
         <div className="grid gap-10 md:grid-cols-2 md:gap-16">
           {/* PRODUCT IMAGE */}
@@ -216,7 +216,7 @@ export default function ProductPage() {
                     className="object-contain p-6 md:p-8"
                   />
                 ) : (
-                  <div className="flex h-full items-center justify-center bg-[#eeeae2] px-10 text-center">
+                  <div className="flex h-full items-center justify-center bg-[#ffffff] px-10 text-center">
                     <div>
                       <p className="text-[10px] uppercase tracking-[0.25em] text-[#756b60]">
                         NAVIRA 3D

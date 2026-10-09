@@ -562,7 +562,7 @@ export default function CheckoutPage() {
 
   if (cart.length === 0) {
     return (
-      <main className="min-h-screen w-full overflow-x-hidden bg-[#f7f5f0] pb-24 text-[#171717] md:pb-0">
+      <main className="min-h-screen w-full overflow-x-hidden bg-[#ffffff] pb-24 text-[#171717] md:pb-0">
         <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 md:px-10 md:py-16">
 
           <p className="text-[10px] uppercase tracking-[0.25em] text-[#756b60]">
@@ -603,7 +603,7 @@ export default function CheckoutPage() {
   // ============================================================
 
   return (
-    <main className="min-h-screen w-full overflow-x-hidden bg-[#f7f5f0] pb-24 text-[#171717] md:pb-0">
+    <main className="min-h-screen w-full overflow-x-hidden bg-[#ffffff] pb-24 text-[#171717] md:pb-0">
 
       <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 md:px-10 md:py-16">
 
@@ -962,7 +962,7 @@ export default function CheckoutPage() {
                     className="flex gap-3 sm:gap-4"
                   >
 
-                    <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-[#f7f5f0] sm:h-24 sm:w-24 lg:rounded-none">
+                    <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-[#ffffff] sm:h-24 sm:w-24 lg:rounded-none">
 
                       <Image
                         src={item.image}

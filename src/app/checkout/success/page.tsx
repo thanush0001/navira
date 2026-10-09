@@ -55,7 +55,7 @@ export default function CheckoutSuccessPage() {
     paymentMethod === "Cash on Delivery";
 
   return (
-    <main className="min-h-screen bg-[#f7f5f0] px-6 py-16 text-[#171717]">
+    <main className="min-h-screen bg-[#ffffff] px-6 py-16 text-[#171717]">
       <div className="mx-auto max-w-3xl overflow-hidden border border-black/10 bg-white">
 
         {/* HEADER */}

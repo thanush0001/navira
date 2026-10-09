@@ -70,7 +70,7 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f7f5f0] px-6 py-16 text-[#171717]">
+    <main className="min-h-screen bg-[#ffffff] px-6 py-16 text-[#171717]">
       <div className="mx-auto flex min-h-[80vh] max-w-md items-center justify-center">
         <div className="w-full border border-black/10 bg-white p-8 md:p-10">
 

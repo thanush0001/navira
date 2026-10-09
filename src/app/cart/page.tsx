@@ -16,7 +16,7 @@ export default function CartPage() {
   } = useCart();
 
   return (
-    <main className="min-h-screen w-full overflow-x-hidden bg-[#f7f5f0] pb-24 text-[#171717] md:pb-0">
+    <main className="min-h-screen w-full overflow-x-hidden bg-[#ffffff] pb-24 text-[#171717] md:pb-0">
 
       {/* =====================================================
           CART HEADER
