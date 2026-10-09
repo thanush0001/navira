@@ -17,66 +17,59 @@ const PRODUCTS: Record<string, Product> = {
   "tiger-head": {
     id: "tiger-head",
     name: "Tiger Head Sculpture",
-    price: 2499,
+    price: 1199,
     image: "/products/tiger-head-orange.png",
     description:
       "Cultural 3D-printed tiger head sculpture, crafted with character and attention to detail.",
   },
-
   "tiger-head-white": {
     id: "tiger-head-white",
     name: "White Tiger Head",
-    price: 2499,
+    price: 1199,
     image: "/products/tiger-head-white.png",
     description:
       "Striking white tiger head decorative sculpture, designed for distinctive display.",
   },
-
   "tiger-head-black": {
     id: "tiger-head-black",
     name: "Black Tiger Head",
-    price: 2499,
+    price: 1299,
     image: "/products/tiger-head-black.png",
     description:
       "Bold black tiger head decorative sculpture, crafted for a strong visual presence.",
   },
-
   kambala: {
     id: "kambala",
     name: "Kambala",
-    price: 3499,
+    price: 2499,
     image: "/products/kambla.png",
     description:
       "A 3D-printed tribute to the traditional Kambala sport of coastal Karnataka.",
   },
-
   "aati-kalanje": {
     id: "aati-kalanje",
     name: "Aati Kalanje",
-    price: 2999,
+    price: 1999,
     image: "/products/aati-kalange.png",
     description:
       "Traditional coastal Karnataka inspired creation, carefully 3D printed for display.",
   },
-
   "mudi-hakun": {
     id: "mudi-hakun",
     name: "Mudi Hakun",
     price: 2999,
     image: "/products/mudi-hakun.png",
     description:
-      "Culturally inspired handcrafted 3D-printed piece with distinctive character.",
+      "Culturally inspired 3D-printed piece with distinctive character.",
   },
-
   ganesha: {
     id: "ganesha",
     name: "Ganesha",
-    price: 999,
+    price: 799,
     image: null,
     description:
       "A thoughtfully designed 3D-printed Ganesha piece, created for decorative display.",
   },
-
   "custom-momentos": {
     id: "custom-momentos",
     name: "Custom Momentos",
@@ -85,16 +78,14 @@ const PRODUCTS: Record<string, Product> = {
     description:
       "Create a personalised 3D-printed momento for special occasions, celebrations, and memorable moments.",
   },
-
   "pili-nalipun": {
     id: "pili-nalipun",
     name: "Pili Nalipun",
-    price: 2999,
+    price: 4999,
     image: null,
     description:
       "A distinctive 3D-printed creation inspired by the cultural character of coastal Karnataka.",
   },
-
   "custom-3d-prints": {
     id: "custom-3d-prints",
     name: "Custom 3D Prints",
@@ -103,12 +94,27 @@ const PRODUCTS: Record<string, Product> = {
     description:
       "Have an idea or design in mind? Talk to NAVIRA about creating a custom 3D-printed piece.",
   },
+  "dharani-mandala": {
+    id: "dharani-mandala",
+    name: "Dharani Mandala",
+    price: 5499,
+    image: null,
+    description:
+      "A distinctive 3D-printed cultural art piece inspired by the Dharani Mandala tradition.",
+  },
+  "appe-pili": {
+    id: "appe-pili",
+    name: "Appe Pili",
+    price: 2999,
+    image: null,
+    description:
+      "A 3D-printed tribute to the vibrant Pili dance tradition of coastal Karnataka.",
+  },
 };
 
 export default function ProductPage() {
   const params = useParams<{ slug: string }>();
   const router = useRouter();
-
   const { addToCart } = useCart();
 
   const slug = params.slug;
@@ -125,13 +131,10 @@ export default function ProductPage() {
           <p className="mb-4 text-[10px] uppercase tracking-[0.25em] text-[#756b60]">
             NAVIRA 3D
           </p>
-
           <h1 className="font-serif text-4xl">Product Not Found</h1>
-
           <p className="mt-4 text-sm text-[#625d57]">
             The product you are looking for does not exist.
           </p>
-
           <button
             type="button"
             onClick={() => router.push("/")}
@@ -144,32 +147,27 @@ export default function ProductPage() {
     );
   }
 
-  // CUSTOM PRODUCTS
   const isCustomProduct =
     product.id === "custom-momentos" ||
     product.id === "custom-3d-prints";
 
-  // DECREASE QUANTITY
   const decreaseQuantity = () => {
     setQuantity((current) => Math.max(1, current - 1));
     setAdded(false);
   };
 
-  // INCREASE QUANTITY
   const increaseQuantity = () => {
     setQuantity((current) => current + 1);
     setAdded(false);
   };
 
-  // WHATSAPP CUSTOM ORDER
   const openCustomWhatsApp = () => {
-    window.open(
-      "https://wa.me/918660215764?text=Hi%20NAVIRA%2C%20I%27m%20interested%20in%20a%20custom%20order.",
-      "_blank"
+    const message = encodeURIComponent(
+      "Hi NAVIRA, I'm interested in a custom order."
     );
+    window.open(`https://wa.me/918660215764?text=${message}`, "_blank");
   };
 
-  // ADD TO CART
   const handleAddToCart = () => {
     if (isCustomProduct) {
       openCustomWhatsApp();
@@ -185,7 +183,6 @@ export default function ProductPage() {
     setAdded(true);
   };
 
-  // BUY NOW
   const handleBuyNow = () => {
     if (isCustomProduct) {
       openCustomWhatsApp();
@@ -224,11 +221,9 @@ export default function ProductPage() {
                       <p className="text-[10px] uppercase tracking-[0.25em] text-[#756b60]">
                         NAVIRA 3D
                       </p>
-
                       <p className="mt-4 font-serif text-3xl">
                         {product.name}
                       </p>
-
                       <p className="mt-3 text-xs leading-6 text-[#756b60]">
                         Product image coming soon.
                       </p>
@@ -244,11 +239,9 @@ export default function ProductPage() {
             <p className="mb-4 text-[10px] uppercase tracking-[0.25em] text-[#756b60]">
               NAVIRA 3D
             </p>
-
             <h1 className="font-serif text-4xl tracking-tight md:text-5xl">
               {product.name}
             </h1>
-
             <p className="mt-6 max-w-lg text-sm leading-7 text-[#625d57]">
               {product.description}
             </p>
@@ -267,7 +260,6 @@ export default function ProductPage() {
                 <p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-[#756b60]">
                   Quantity
                 </p>
-
                 <div className="flex h-12 w-32 items-center justify-between border border-black/20 bg-white px-4">
                   <button
                     type="button"
@@ -278,11 +270,9 @@ export default function ProductPage() {
                   >
                     −
                   </button>
-
                   <span className="min-w-6 text-center text-sm">
                     {quantity}
                   </span>
-
                   <button
                     type="button"
                     onClick={increaseQuantity}
@@ -308,7 +298,6 @@ export default function ProductPage() {
                     ? "ADDED TO CART ✓"
                     : "ADD TO CART"}
               </button>
-
               <button
                 type="button"
                 onClick={handleBuyNow}
@@ -324,33 +313,26 @@ export default function ProductPage() {
                 <p className="text-[10px] uppercase tracking-[0.2em]">
                   Product Details
                 </p>
-
                 <p className="mt-3 text-sm leading-6 text-[#625d57]">
-                  Carefully designed and 3D printed for decorative
-                  display. Each piece is produced with attention to
-                  form and detail.
+                  Carefully designed and 3D printed for decorative display.
+                  Each piece is produced with attention to form and detail.
                 </p>
               </div>
-
               <div className="border-b border-black/10 py-5">
                 <p className="text-[10px] uppercase tracking-[0.2em]">
                   Shipping
                 </p>
-
                 <p className="mt-3 text-sm leading-6 text-[#625d57]">
                   Securely packaged and shipped to your doorstep.
                 </p>
               </div>
-
               <div className="py-5">
                 <p className="text-[10px] uppercase tracking-[0.2em]">
                   Custom Orders
                 </p>
-
                 <p className="mt-3 text-sm leading-6 text-[#625d57]">
                   Looking for a custom design or bulk order?
                 </p>
-
                 <a
                   href="https://wa.me/918660215764"
                   target="_blank"

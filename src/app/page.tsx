@@ -108,6 +108,32 @@ const products = [
     sale: false,
   },
   {
+    name: "Dharani Mandala",
+    image: "/products/dharani-mandala.png",
+    price: "₹5,499",
+    description: "A beautifully crafted 3D-printed Dharani Mandala inspired by cultural heritage.",
+    slug: "dharani-mandala",
+    heroLabel: "DHARANI MANDALA",
+    heroDescription:
+      "A distinctive cultural art piece celebrating tradition through 3D printing.",
+    category: "Traditional Heritage",
+    stock: true,
+    sale: false,
+  },
+  {
+    name: "Appe Pili",
+    image: "/products/appe-pili.png",
+    price: "₹2,999",
+    description: "A 3D-printed tribute to the vibrant Pili dance tradition of coastal Karnataka.",
+    slug: "appe-pili",
+    heroLabel: "APPE PILI",
+    heroDescription:
+      "A vibrant tribute to the cultural spirit of coastal Karnataka.",
+    category: "Traditional Heritage",
+    stock: true,
+    sale: false,
+  },
+  {
     name: "Ganesha",
     image: null,
     price: "₹799",
@@ -464,7 +490,7 @@ export default function Home() {
           ANNOUNCEMENT BAR
       ========================================================= */}
       <div className="hidden bg-[#171717] px-4 py-2.5 text-center text-[10px] font-medium tracking-[0.16em] text-white md:block md:text-[11px]">
-        FREE EXPRESS SHIPPING ON ORDERS ABOVE ₹1,499
+        FREE EXPRESS SHIPPING ON ORDERS ABOVE ₹1,999
         <span className="mx-2 opacity-50">|</span>
         CUSTOM 3D PRINTING AVAILABLE
       </div>
