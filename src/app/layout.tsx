@@ -4,9 +4,37 @@ import { CartProvider } from "./context/CartContext";
 import MobileBottomNav from "./MobileBottomNav";
 
 export const metadata: Metadata = {
-  title: "Navira 3D",
+  metadataBase: new URL("https://navira3d.in"),
+
+  title: {
+    default: "NAVIRA | 3D Printed Cultural Art & Custom 3D Prints",
+    template: "%s | NAVIRA",
+  },
+
   description:
-    "Culturally inspired 3D printed heritage pieces.",
+    "Discover 3D-printed cultural sculptures, Tulu Nadu heritage art, Kambala-inspired creations, and custom 3D prints at NAVIRA in Mangaluru, Karnataka.",
+
+  applicationName: "NAVIRA",
+
+  openGraph: {
+    type: "website",
+    url: "https://navira3d.in",
+    siteName: "NAVIRA",
+    title: "NAVIRA | 3D Printed Cultural Art & Custom 3D Prints",
+    description:
+      "Explore cultural 3D-printed sculptures, heritage-inspired art, and custom 3D prints from NAVIRA in Mangaluru, Karnataka.",
+    images: [
+      {
+        url: "/images/navira-logo.png",
+        alt: "NAVIRA — Culture. Crafted. Created.",
+      },
+    ],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
