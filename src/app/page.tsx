@@ -481,7 +481,7 @@ export default function Home() {
           <div className="mx-auto flex max-w-[1440px] items-center justify-end gap-7 px-8 py-3 text-[11px] tracking-[0.04em]">
 
             <a
-              href="mailto:support@navira3d.com"
+              href="mailto:navira3dprint@gmail.com"
               className="flex items-center gap-1.5 rounded-full border border-[#cbd6e5] bg-white px-4 py-2.5 transition hover:border-[#aebdce] hover:bg-[#f8fafc]"
             >
               <Headphones size={13} strokeWidth={1.5} />
@@ -1088,7 +1088,7 @@ export default function Home() {
               )}
 
               <a
-                href="mailto:support@navira3d.com"
+                href="mailto:navira3dprint@gmail.com"
                 onClick={closeMobileMenu}
                 className="border-b border-black/10 py-4 text-[11px] tracking-[0.14em]"
               >
@@ -1624,7 +1624,7 @@ export default function Home() {
             </a>
 
             <a
-              href="mailto:support@navira3d.com"
+              href="mailto:navira3dprint@gmail.com"
               className="rounded-full border border-black/20 px-8 py-4 text-[10px] tracking-[0.18em] transition hover:border-black"
             >
               EMAIL SUPPORT
@@ -1745,7 +1745,7 @@ export default function Home() {
             </a>
 
             <a
-              href="mailto:support@navira3d.com"
+              href="mailto:navira3dprint@gmail.com"
               className="rounded-full border border-white/30 px-8 py-4 text-[10px] tracking-[0.18em] transition hover:border-white"
             >
               EMAIL SUPPORT
@@ -1803,7 +1803,7 @@ export default function Home() {
                 </a>
 
                 <a
-                  href="mailto:support@navira3d.com"
+                  href="mailto:navira3dprint@gmail.com"
                   aria-label="Email"
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-sm transition hover:bg-white/20"
                 >
@@ -1907,28 +1907,25 @@ export default function Home() {
             </p>
 
             <div className="flex flex-wrap gap-x-6 gap-y-3 text-[#9eb0c5]">
-
-              <a
-                href="/#support"
-                className="transition hover:text-white"
-              >
+              <Link href="/privacy" className="transition hover:text-white">
                 Privacy Policy
-              </a>
+              </Link>
 
-              <a
-                href="/#support"
-                className="transition hover:text-white"
-              >
-                Studio Policies & Dispatch Rules
-              </a>
+              <Link href="/shipping" className="transition hover:text-white">
+                Shipping Policy
+              </Link>
 
-              <a
-                href="/#support"
-                className="transition hover:text-white"
-              >
+              <Link href="/returns" className="transition hover:text-white">
+                Returns & Refunds
+              </Link>
+
+              <Link href="/terms" className="transition hover:text-white">
+                Terms & Conditions
+              </Link>
+
+              <Link href="/#support" className="transition hover:text-white">
                 Contact Support
-              </a>
-
+              </Link>
             </div>
 
           </div>
